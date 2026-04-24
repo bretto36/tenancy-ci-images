@@ -1,10 +1,7 @@
 ARG VERSION
 FROM php:${VERSION}-cli
 
-USER root
-
-RUN apt update
-RUN apt install -y wget
+RUN apt-get update && apt-get install -y wget
 
 # Copy over our script to check if the extension is already installed
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /opt/php-ext-check
