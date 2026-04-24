@@ -64,7 +64,7 @@ jobs:
                   push: true
                   context: .dev/Docker/Images/PHP
                   tags: |
-                    bretto36/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}
+                    bretto36/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}
 
@@ -110,6 +110,6 @@ jobs:
                   push: true
                   context: .dev/Docker/Images/MySQL
                   tags: |
-                    bretto36/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}
+                    bretto36/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}

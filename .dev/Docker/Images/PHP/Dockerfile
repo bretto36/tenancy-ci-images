@@ -1,6 +1,8 @@
 ARG VERSION
 FROM php:${VERSION}-cli
 
+USER root
+
 RUN apt update
 RUN apt install -y wget
 
