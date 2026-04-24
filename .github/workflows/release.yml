@@ -64,9 +64,9 @@ jobs:
                   push: true
                   context: .dev/Docker/Images/PHP
                   tags: |
-                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
-                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
-                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:latest
+                    bretto36/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
+                    bretto36/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
+                    bretto36/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}
 
@@ -112,8 +112,8 @@ jobs:
                   push: true
                   context: .dev/Docker/Images/MySQL
                   tags: |
-                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
-                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
-                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:latest
+                    bretto36/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
+                    bretto36/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
+                    bretto36/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}
