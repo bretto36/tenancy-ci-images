@@ -52,15 +52,21 @@ jobs:
             - name: Information
               run: echo "Building Images for PHP ${{ matrix.version }}"
 
+            - name: Illegal Tag Character Replacement
+              run: |
+                  BASE_VERSION=${{ matrix.version }}
+                  UNDERSCORE_VERSION="${BASE_VERSION//\./_}"
+                  echo $UNDERSCORE_VERSION
+
             - name: Build and push
               uses: docker/build-push-action@v6
               with:
                   push: true
                   context: .dev/Docker/Images/PHP
                   tags: |
-                    tenancy/tenancy-ci-php-${{ matrix.version }}:${{ needs.analyse.outputs.version }}-latest
-                    tenancy/tenancy-ci-php-${{ matrix.version }}:${{ needs.analyse.outputs.version }}
-                    tenancy/tenancy-ci-php-${{ matrix.version }}:latest
+                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
+                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
+                    tenancy/tenancy-ci-php-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}
 
@@ -94,14 +100,20 @@ jobs:
             - name: Information
               run: echo "Building Images for MySQL ${{ matrix.version }}"
 
+            - name: Illegal Tag Character Replacement
+              run: |
+                  BASE_VERSION=${{ matrix.version }}
+                  UNDERSCORE_VERSION="${BASE_VERSION//\./_}"
+                  echo $UNDERSCORE_VERSION
+
             - name: Build and push
               uses: docker/build-push-action@v6
               with:
                   push: true
                   context: .dev/Docker/Images/MySQL
                   tags: |
-                    tenancy/tenancy-ci-mysql-${{ matrix.version }}:${{ needs.analyse.outputs.version }}-latest
-                    tenancy/tenancy-ci-mysql-${{ matrix.version }}:${{ needs.analyse.outputs.version }}
-                    tenancy/tenancy-ci-mysql-${{ matrix.version }}:latest
+                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}-latest
+                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:${{ needs.analyse.outputs.version }}
+                    tenancy/tenancy-ci-mysql-${{ env.UNDERSCORE_VERSION }}:latest
                   build-args: |
                     VERSION=${{ matrix.version }}
